@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>New v2</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+  <div id="container">
+    <script type="module" src="script.js"></script>
+    <div class="fieldsContainer">
+      <p>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+      </p>
+      <p>
+        <label for="description">Desc:</label>
+        <input type="text" id="description" name="description">
+      </p>
+      <p>
+        <label for="startdate">Start:</label>
+        <input type="date" id="startdate" name="start">
+        <label for="enddate">End:</label>
+        <input type="date" id="enddate" name="end">
+      </p>
+    </div>
+    <div id="rulesBuilder" class="rule-editor">
+      <h4>Rules Builder</h4>
+      <div id="name" class="rule-editor-box">
+        <p>Name: <input type="text" id="ruleName">
+          <button id="createJSON" class="ant-btn" style="float: right; ">Create JSON</button>
+        </p>
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+        <div id="JSONpopup"
+          style="display: none; position: fixed; z-index: 1000; left: 50%; top: 20%; background-color: white; border: 1px solid black; padding: 20px;" >
+          <pre  id="jsonPopupCode"></pre>
+          <button id="closeJSONBtn" style="position:absolute; right:10px; top:10px;">Close</button>
+        </div>
+
+      </div>
+      <!-- CONDITIONS -->
+      <div id="conditions" class="rule-editor-box">
+        <p><b>Conditions</b></p>
+        When
+        <select id="LogicSelector">
+          <option value="AND">All</option>
+          <option value="OR">Any</option>
+        </select>
+        conditions are met
+        <div id="conditionsList"></div>
+        <h6 id="iconAddCondition">+ Add Condition</h6>
+        <!-- CONDITIONS LIST -->
+        <div id="addCondition" class="hidden" style="padding-left:2em;">
+          <div style="display:flex; justify-content: space-around;  margin-bottom: 20px;">
+            <div id="shoppingCart" class="divList">
+              <p><b>Shopping Cart</b></p>
+              Choose quantity or value of all the items in the shopping cart
+            </div>
+            <div id="cartItemsQuantity" class="divList">
+              <p><b>Cart Items</b></p>
+              Choose specific products quantity or value to trigger the discount
+            </div>
+            <div id="customers" class="divList">
+              <p><b>Customers</b></p>
+              Choose specific customers attributes to trigger the discount
+            </div>
+            <div id="customAttributes" class="divList">
+              <p><b>Custom Attributes</b></p>
+              Choose your own attributes to trigger the discount
+            </div>
+            <!-- 
+          <div id="coupons" class="divList">
+            <p>Coupons</p>
+            Choose specific coupons to trigger the discount
+          </div>
+          -->
+          </div>
+        </div>
+      </div>
+      <!-- ACTIONS -->
+      <div id="actions" class="rule-editor-box">
+        <p><b>Actions</b></p>
+        Apply these actions
+        <div id="actionsList"></div>
+        <h6 id="iconAddAction">+ Add Action</h6>
+        <div id="addAction" class="hidden" style="padding-left:2em;">
+          <div style="display:flex; justify-content: space-around;  margin-bottom: 20px;">
+            <div id="cartDiscount" class="divList">
+              Discount whole cart</div>
+            <div id="cartItemsDiscount" class="divList">
+              Discount items selected above in the conditions
+            </div>
+            <div id="cartItemsSelectedDiscount" class="divList">
+              Discount other items (BXGY)
+            </div>
+            <div id="ShippingDiscount" class="divList">
+              Discount Shipping
+            </div>
+            <div id="freeItems" class="divList">
+              Free Items
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CATEGORY POPUP -->
+    <div id="popUp" class="hidden" style="border: 1px solid black;border-radius: 5px;">
+      <div>
+        <input type="search" id="mySearch" name="q" placeholder="Search...">
+        <button onclick="search()">Search</button>
+      </div>
+      <div style="display:flex;">
+        <div style="flex: 1;border: 1px solid black;border-radius: 5px;">
+          <p>Shoes <input type="checkbox" name="shoes" value="Checked"></p>
+          <p>Apparel<input type="checkbox" name="apparel" value=""></p>
+        </div>
+        <div style="flex: 1;border: 1px solid black;border-radius: 5px;">
+          <p>Nike <input type="checkbox" name="nike shoes"></p>
+          <p>adidas <input type="checkbox" name="adidas shoes"></p>
+        </div>
+        <div style="flex: 1;border: 1px solid black;border-radius: 5px;"> </div>
+      </div>
+      <div>
+        <button id="closeConditionsItemsPopup">OK</button>
+      </div>
+    </div>
+
+</body>
+
+</html>
